@@ -3,14 +3,11 @@ package ija.ija2022.homework1.game;
 import ija.ija2022.homework1.common.Field;
 import ija.ija2022.homework1.common.Maze;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MazeConfigure {
     int actual_row;
     public int rows, cols;
     private boolean error_occured;
-    private Maze maze;
+    private MazeMap maze;
     private boolean check_start;
     Field[][] field;
     public MazeConfigure() {
@@ -50,7 +47,7 @@ public class MazeConfigure {
         return true;
     }
 
-    private Maze CreateWallFrame(Maze map){
+    private MazeMap CreateWallFrame(MazeMap map){
         int row=0;
         int col=0;
         for (int r = 0; r < map.rows; r++){
@@ -85,7 +82,7 @@ public class MazeConfigure {
 
         return map;
     }
-    private Maze setLinks(Maze map){
+    private Maze setLinks(MazeMap map){
         for(int r = 0; r < map.rows; r++){
             for (int c = 0; c < map.field[0].length; c++){
                 if (r==0) {
@@ -144,7 +141,7 @@ public class MazeConfigure {
         if (error_occured) {
             return null;
         } else {
-            return setLinks(CreateWallFrame(new Maze(rows+2,cols+2)));
+            return setLinks(CreateWallFrame(new MazeMap(rows+2,cols+2)));
         }
     }
 }
