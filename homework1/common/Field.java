@@ -1,10 +1,16 @@
 package ija.ija2022.homework1.common;
 
+import ija.ija2022.homework1.game.MazeMap;
+
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface Field {
+
+
+    void setMap(MazeMap map);
+
     static enum Direction{
         D,L,R,U;
         public int deltaRow(){

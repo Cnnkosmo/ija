@@ -82,55 +82,65 @@ public class MazeConfigure {
 
         return map;
     }
-    private Maze setLinks(MazeMap map){
-        for(int r = 0; r < map.rows; r++){
+//    private Maze setLinks(MazeMap map){
+//        for(int r = 0; r < map.rows; r++){
+//            for (int c = 0; c < map.field[0].length; c++){
+//                if (r==0) {
+//                    map.field[r][c].setDown_obj(map.field[r + 1][c]);
+//                    if (c - 1 >= 0) {
+//                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
+//                    }
+//                    if (c + 1 < map.field[0].length) {
+//                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
+//                    }
+//                }
+//                else if (r == map.field.length-1) {
+//                    map.field[r][c].setUp_obj(map.field[r - 1][c]);
+//                    if (c - 1 >= 0) {
+//                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
+//                    }
+//                    if (c + 1 < map.field[0].length) {
+//                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
+//                    }
+//                }
+//                else if (c == 0){
+//                        map.field[r][c].setRight_obj(map.field[r][c+1]);
+//                    if (r-1 > 0){
+//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
+//                        }
+//                    if (r+1 < map.field.length){
+//                        map.field[r][c].setDown_obj((map.field[r+1][c]));
+//                    }
+//                }
+//                else if (c == map.field[0].length-1){
+//                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
+//                    if (r-1 < 0){
+//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
+//                    }
+//                    if (r+1 < map.field.length){
+//                        map.field[r][c].setDown_obj(map.field[r+1][c]);
+//                    }
+//                    }
+//                else {
+//                        map.field[r][c].setDown_obj(map.field[r+1][c]);
+//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
+//                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
+//                        map.field[r][c].setRight_obj(map.field[r][c+1]);
+//                    }
+//            }
+//        }
+//        return map;
+//    }
+
+    private MazeMap setLinks(MazeMap map){
+        for (int r = 0; r < map.rows; r++){
             for (int c = 0; c < map.field[0].length; c++){
-                if (r==0) {
-                    map.field[r][c].setDown_obj(map.field[r + 1][c]);
-                    if (c - 1 >= 0) {
-                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
-                    }
-                    if (c + 1 < map.field[0].length) {
-                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
-                    }
-                }
-                else if (r == map.field.length-1) {
-                    map.field[r][c].setUp_obj(map.field[r - 1][c]);
-                    if (c - 1 >= 0) {
-                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
-                    }
-                    if (c + 1 < map.field[0].length) {
-                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
-                    }
-                }
-                else if (c == 0){
-                        map.field[r][c].setRight_obj(map.field[r][c+1]);
-                    if (r-1 > 0){
-                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-                        }
-                    if (r+1 < map.field.length){
-                        map.field[r][c].setDown_obj((map.field[r+1][c]));
-                    }
-                }
-                else if (c == map.field[0].length-1){
-                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
-                    if (r-1 < 0){
-                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-                    }
-                    if (r+1 < map.field.length){
-                        map.field[r][c].setDown_obj(map.field[r+1][c]);
-                    }
-                    }
-                else {
-                        map.field[r][c].setDown_obj(map.field[r+1][c]);
-                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
-                        map.field[r][c].setRight_obj(map.field[r][c+1]);
-                    }
+                map.field[r][c].setMap(map);
             }
         }
-        return map;
+    return map;
     }
+
 
     public boolean stopReading() {
         return true;

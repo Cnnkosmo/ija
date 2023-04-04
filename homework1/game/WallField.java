@@ -6,9 +6,15 @@ import ija.ija2022.homework1.common.MazeObject;
 
 public class WallField implements Field {
 
+    MazeMap map;
     Field up_obj, right_obj, left_obj, down_obj;
     int row = 0;
     int col = 0;
+
+    @Override
+    public void setMap(MazeMap map) {
+        this.map = map;
+    }
 
     @Override
     public Field getUp_obj() {
@@ -61,35 +67,36 @@ public class WallField implements Field {
     }
 
     @Override
-    public Field nextField(Direction dirs) {
+    public Field nextField(Direction dirs)
+    {
         switch (dirs){
             case D -> {
-                if (down_obj != null){
-                    return down_obj;
+                if (map.field[row+1][col] != null){
+                    return map.field[row-1][col];
                 }
                 else {
                     throw new UnsupportedOperationException();
                 }
             }
             case R -> {
-                if (right_obj != null){
-                    return right_obj;
+                if (map.field[row][col+1] != null){
+                    return map.field[row][col+1];
                 }
                 else {
                     throw new UnsupportedOperationException();
                 }
             }
             case L -> {
-                if (left_obj != null){
-                    return left_obj;
+                if (map.field[row][col-1] != null){
+                    return map.field[row][col-1];
                 }
                 else {
                     throw new UnsupportedOperationException();
                 }
             }
             case U -> {
-                if (up_obj != null){
-                    return up_obj;
+                if (map.field[row-1][col] != null){
+                    return map.field[row-1][col];
                 }
                 else {
                     throw new UnsupportedOperationException();
@@ -98,6 +105,7 @@ public class WallField implements Field {
         }
         return null;
     }
+
 
     @Override
     public boolean put(MazeObject object) {
@@ -148,5 +156,6 @@ public class WallField implements Field {
         }
         return false;
     }
+
 
 }
