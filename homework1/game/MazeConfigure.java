@@ -31,10 +31,11 @@ public class MazeConfigure {
             }
             else if(a == '.'){
                 field[actual_row][cols] = new PathField(actual_row,cols);
+
             }
             else if(a == 'S'){
                 if (check_start) error_occured = true;
-                field[actual_row][cols] = new PacmanField(new PacmanObject(actual_row,cols));
+                field[actual_row][cols] = new PathField(new PacmanObject(rows,cols),rows,cols);
                 check_start = true;
             }
             else {
@@ -70,8 +71,8 @@ public class MazeConfigure {
                         temp = new WallField(r,c);
                     } else if (field[r-1][c-1].getSymbol()=='.') {
                         temp = new PathField(r,c);
-                    } else if (field[r-1][c-1].getSymbol()=='S') {
-                        temp = new PathField(r,c,new PacmanObject(r,c));
+                    } else if (field[r-1][c-1].getSymbol()=='S'){
+                        temp = new PathField((new PacmanObject(r,c)),r,c);
 
                     }
                     map.field[r][c]  = temp;
@@ -82,56 +83,6 @@ public class MazeConfigure {
 
         return map;
     }
-//    private Maze setLinks(MazeMap map){
-//        for(int r = 0; r < map.rows; r++){
-//            for (int c = 0; c < map.field[0].length; c++){
-//                if (r==0) {
-//                    map.field[r][c].setDown_obj(map.field[r + 1][c]);
-//                    if (c - 1 >= 0) {
-//                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
-//                    }
-//                    if (c + 1 < map.field[0].length) {
-//                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
-//                    }
-//                }
-//                else if (r == map.field.length-1) {
-//                    map.field[r][c].setUp_obj(map.field[r - 1][c]);
-//                    if (c - 1 >= 0) {
-//                        map.field[r][c].setLeft_obj(map.field[r][c - 1]);
-//                    }
-//                    if (c + 1 < map.field[0].length) {
-//                        map.field[r][c].setRight_obj(map.field[r][c + 1]);
-//                    }
-//                }
-//                else if (c == 0){
-//                        map.field[r][c].setRight_obj(map.field[r][c+1]);
-//                    if (r-1 > 0){
-//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-//                        }
-//                    if (r+1 < map.field.length){
-//                        map.field[r][c].setDown_obj((map.field[r+1][c]));
-//                    }
-//                }
-//                else if (c == map.field[0].length-1){
-//                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
-//                    if (r-1 < 0){
-//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-//                    }
-//                    if (r+1 < map.field.length){
-//                        map.field[r][c].setDown_obj(map.field[r+1][c]);
-//                    }
-//                    }
-//                else {
-//                        map.field[r][c].setDown_obj(map.field[r+1][c]);
-//                        map.field[r][c].setUp_obj(map.field[r-1][c]);
-//                        map.field[r][c].setLeft_obj(map.field[r][c-1]);
-//                        map.field[r][c].setRight_obj(map.field[r][c+1]);
-//                    }
-//            }
-//        }
-//        return map;
-//    }
-
     private MazeMap setLinks(MazeMap map){
         for (int r = 0; r < map.rows; r++){
             for (int c = 0; c < map.field[0].length; c++){

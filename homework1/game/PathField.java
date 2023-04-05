@@ -5,19 +5,22 @@ import ija.ija2022.homework1.common.Maze;
 import ija.ija2022.homework1.common.MazeObject;
 
 public class PathField implements Field{
-
-    public Field up_obj, right_obj, left_obj, down_obj;
     PacmanObject pacman;
     boolean empty;
+    boolean pacman_entry;
     int row = 0;
     int col = 0;
-
     MazeMap map;
+
     @Override
     public char getSymbol() {
-        return '.';
+        if(pacman == null){
+            return '.';
+        }
+        else{
+            return 'S';
+        }
     }
-
     @Override
     public void setMaze(Maze maze) {
 
@@ -27,36 +30,9 @@ public class PathField implements Field{
         this.map = map;
     }
 
-    public Field getUp_obj() {
-        return up_obj;
-    }
-
-    public Field getRight_obj() {
-        return right_obj;
-    }
-
-    public Field getLeft_obj() {
-        return left_obj;
-    }
-
-    public Field getDown_obj() {
-        return down_obj;
-    }
-
-    public void setUp_obj(Field up_obj) {
-        this.up_obj = up_obj;
-    }
-
-    public void setRight_obj(Field right_obj) {
-        this.right_obj = right_obj;
-    }
-
-    public void setLeft_obj(Field left_obj) {
-        this.left_obj = left_obj;
-    }
-
-    public void setDown_obj(Field down_obj) {
-        this.down_obj = down_obj;
+    @Override
+    public boolean canMove() {
+        return true;
     }
 
     @Override
@@ -136,29 +112,16 @@ public class PathField implements Field{
         return pacman;
     }
 
-    @Override
-    public boolean canMove() {
-        return true;
-    }
-
     public PathField(int row, int col){
         this.row = row;
         this.col = col;
         this.pacman = null;
     }
-    public PathField(int row, int col, PacmanObject pacman,Field up_obj,Field right_obj,Field left_obj,Field down_obj){
+    public PathField(PacmanObject pacman,int row,int col){
         this.row = row;
         this.col = col;
         this.pacman = pacman;
-        this.up_obj = up_obj;
-        this.right_obj = right_obj;
-        this.left_obj = left_obj;
-        this.down_obj = down_obj;
-    }
-    public PathField(int row, int col, PacmanObject pacman){
-        this.row = row;
-        this.col = col;
-        this.pacman = pacman;
+        this.pacman.setPlaceholder(this);
     }
 
     @Override

@@ -17,44 +17,10 @@ public class WallField implements Field {
     }
 
     @Override
-    public Field getUp_obj() {
-        return up_obj;
+    public boolean canMove() {
+        return false;
     }
 
-    @Override
-    public Field getRight_obj() {
-        return right_obj;
-    }
-
-    @Override
-    public Field getLeft_obj() {
-        return left_obj;
-    }
-
-    @Override
-    public Field getDown_obj() {
-        return down_obj;
-    }
-
-    @Override
-    public void setUp_obj(Field up_obj) {
-        this.up_obj = up_obj;
-    }
-
-    @Override
-    public void setRight_obj(Field right_obj) {
-        this.right_obj = right_obj;
-    }
-
-    @Override
-    public void setLeft_obj(Field left_obj) {
-        this.left_obj = left_obj;
-    }
-
-    @Override
-    public void setDown_obj(Field down_obj) {
-        this.down_obj = down_obj;
-    }
 
     @Override
     public char getSymbol() {
@@ -125,11 +91,6 @@ public class WallField implements Field {
     @Override
     public MazeObject get() {
         return null;
-    }
-
-    @Override
-    public boolean canMove() {
-        return false;
     }
 
     public WallField(int row, int col){
